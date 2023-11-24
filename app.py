@@ -40,6 +40,9 @@ def upload():
         return "No file part"
 
     file = request.files['file']
+    product_name = request.form['productName']
+    product_desc = request.form['productDetails']
+    print(product_name,product_desc)
 
     # If the user does not select a file, the browser submits an empty file without a filename
     if file.filename == '':
@@ -49,7 +52,7 @@ def upload():
     if file:
         filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(filename)
-        create_ad_for_all()
+        create_ad_for_all(product_name,product_desc)
         return redirect("/customers")
         # return "File successfully uploaded and saved at " + filename
 
@@ -57,7 +60,7 @@ def upload():
 
 
 
-@app.route('/customers')
+@app.route('/customers', methods=['GET', 'POST'])
 def display_table():
     connection = sqlite3.connect('demo.db')
     cursor = connection.cursor()
@@ -65,10 +68,21 @@ def display_table():
     data = cursor.fetchall()
     print(data)
     connection.close()
-    for i in data:
-        send_whatsapp_message("+"+str(i[4]),i[9])
-    return redirect("/deliver")
-    # return render_template('customer_table.html', data=data)
+    if request.method == 'POST':
+        for i in data:
+            send_whatsapp_message("+" + str(i[4]), i[9])
+
+    # connection = sqlite3.connect('demo.db')
+    # cursor = connection.cursor()
+    # cursor.execute('SELECT * FROM da')
+    # data = cursor.fetchall()
+    # print(data)
+    # connection.close()
+
+    # return redirect("/deliver")
+    return render_template('customer_table.html', data=data)
+
+
 
 
 @app.route('/deliver')

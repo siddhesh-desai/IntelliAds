@@ -9,7 +9,7 @@ connection = sqlite3.connect('demo.db')
 df.to_sql('da', connection, if_exists='replace')
 
 
-def create_ad_for_all():
+def create_ad_for_all(product_name,product_desc):
     connection = sqlite3.connect('demo.db')  # Replace 'your_database.db' with your actual database name
     cursor = connection.cursor()
 
@@ -18,8 +18,8 @@ def create_ad_for_all():
     new_data = []
     for i in data:
         cust_name = i[1]+" "+i[2]
-        product_name = "US POLO T SHirts"
-        product_desc = "Durable, Pack of 2 Black and White, Seasonal, Premium"
+        # product_name = "US POLO T SHirts"
+        # product_desc = "Durable, Pack of 2 Black and White, Seasonal, Premium"
         cust_desc = i[7]
         pp = create_prompt_from_description(product_name=product_name, product_desc=product_desc,
                                                           customer_name=cust_name, customer_interests=cust_desc)

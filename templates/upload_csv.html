@@ -61,9 +61,39 @@
   </head>
   <body>
     <div id="card">
-      <h3>Upload your Customer Data</h3>
+      <h3>Upload Data</h3>
       <hr />
       <form action="/upload" method="post" enctype="multipart/form-data">
+      <div class="mb-3" style="padding: 2%">
+          <label for="productName" class="form-label"
+            >Enter your Product Name:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="productName"
+            name="productName"
+
+            placeholder="T-Shirt"
+          />
+        </div>
+
+      <div class="mb-3" style="padding: 2%">
+          <label for="productDetails" class="form-label"
+            >Enter your Product's Details:</label
+          >
+          <textarea
+            type="text"
+            class="form-control"
+            id="productDetails"
+            name="productDetails"
+            rows="2"
+
+            placeholder="Color : Blue, Size : XL"
+          ></textarea>
+        </div>
+
+
         <div class="input-group mb-3" style="align-items: center">
           <div class="custom-file">
             <input
@@ -75,6 +105,7 @@
             />
           </div>
         </div>
+
 
         <div id="buttons-container">
           <button class="button" type="submit" value="Upload">
