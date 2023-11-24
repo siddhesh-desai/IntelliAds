@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLite Table Display</title>
+</head>
+<body>
+    <h1>SQLite Table Display</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <!-- Replace the column names with your actual column names -->
+                <th>Column1</th>
+                <th>Column2</th>
+                <!-- Add more th elements as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
