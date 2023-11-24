@@ -1,10 +1,15 @@
 import sqlite3
+from csv_functions import *
 import os
 from flask import Flask, render_template, request, redirect
 from openai_functions import *
 from bard_functions import *
+from whatsapp_messages import send_whatsapp_message
 
 app = Flask(__name__)
+
+
+
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -44,9 +49,11 @@ def upload():
     if file:
         filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(filename)
-        return "File successfully uploaded and saved at " + filename
+        create_ad_for_all()
+        return redirect("/customers")
+        # return "File successfully uploaded and saved at " + filename
 
-    return render_template()
+
 
 
 
@@ -58,12 +65,31 @@ def display_table():
     data = cursor.fetchall()
     print(data)
     connection.close()
+    for i in data:
+        send_whatsapp_message("+"+str(i[4]),i[9])
+    return redirect("/deliver")
+    # return render_template('customer_table.html', data=data)
 
-    return render_template('customer_table.html', data=data)
+
+@app.route('/deliver')
+def deliver():
+    connection = sqlite3.connect('demo.db')
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM da')
+    data = cursor.fetchall()
+    print(data)
+    connection.close()
+
+    # for i in data:
+    #     send_whatsapp_message(i[4],i[9])
+    return "Success"
+    # return render_template('customer_table.html', data=data)
+
+@app.route('/ss')
+def deliverr():
+    send_whatsapp_message("+919370554548","HHHHHH")
+    return "Success"
 
 if __name__ == '__main__':
     app.run(debug=True)
 
-
-if __name__ == "__main__":
-    app.run(debug=True)

@@ -46,4 +46,3 @@ def create_ad_for_all():
 #     for i in data:
 
 
-create_ad_for_all()
