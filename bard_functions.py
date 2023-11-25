@@ -10,7 +10,7 @@ def answer_prompt_bard(query):
     # To store the session of Bard
     cookie_dict = {
         "__Secure-1PSID": "dQj61PLYUQiINFxNU7igjgH903TfAJozliAByaQ_Sc5tlyjN0eMZWqe01m4cgSKh1xrvow.",
-        "__Secure-1PSIDTS": "sidts-CjEBNiGH7rGQk1g0NPkP67QVKPc1SRcU2JMCZL7ydX65ctk5ZOwHQjKZRFn4IAbiK3ilEAA"
+        "__Secure-1PSIDTS": "sidts-CjEBNiGH7vlVh7dmfArOPW7c4S3i5H-j5_Bd-WPb3CrBsohPIfHHzf_B-i5_LpP77HJOEAA"
     }
 
     bard = BardCookies(cookie_dict=cookie_dict)

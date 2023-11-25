@@ -9,19 +9,28 @@ from whatsapp_messages import send_whatsapp_message
 app = Flask(__name__)
 
 
+@app.route("/landing", methods=['GET', 'POST'])
+def landing_site():
+    return render_template('landing_page.html')
+
 
 
 
 @app.route("/", methods=['GET', 'POST'])
 def hello_world():
     if request.method == 'POST':
+
         cust_name = request.form['customerName']
         cust_desc = request.form['customerInterests']
         product_name = request.form['productName']
         product_desc = request.form['productDetails']
+        # cust_mobile = request.form['custMobile']
 
         ans = answer_prompt_bard(create_prompt_from_description(product_name=product_name, product_desc=product_desc, customer_name=cust_name, customer_interests=cust_desc))
         return render_template('ad_display.html', advert=ans)
+
+        # if 'button1' in request.form:
+        #     send_whatsapp_message(cust_mobile, ans)
 
 
     return render_template('ad_generation_form.html')
