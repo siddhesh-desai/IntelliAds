@@ -8,7 +8,7 @@ from openai import OpenAI
 def create_ad(prompt):
 
     client = OpenAI(
-        api_key="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"
+        api_key="<KEY_HERE>"
     )
 
     response = client.completions.create(
