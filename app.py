@@ -2,8 +2,9 @@ import sqlite3
 from csv_functions import *
 import os
 from flask import Flask, render_template, request, redirect
-from openai_functions import *
-from bard_functions import *
+# from openai_functions import *
+# from bard_functions import *
+# from whatsapp_messages import send_whatsapp_message
 from whatsapp_messages import send_whatsapp_message
 
 app = Flask(__name__)
@@ -12,9 +13,6 @@ app = Flask(__name__)
 @app.route("/landing", methods=['GET', 'POST'])
 def landing_site():
     return render_template('landing_page.html')
-
-
-
 
 @app.route("/", methods=['GET', 'POST'])
 def hello_world():
