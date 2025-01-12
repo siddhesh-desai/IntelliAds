@@ -53,7 +53,7 @@ def answer_prompt_bard(query):
 
 def create_prompt_from_description(product_name, product_desc, customer_name, customer_interests,
                                    delivery_platform="WhatsApp"):
-    prompt = "Generate a creative personalized according to customer's interests' short text-based advertisement to " \
+    prompt = "Generate a detailed creative personalized according to customer's interests' short text-based advertisement to " \
              "be delivered on '" + delivery_platform + "' including emojis for the product - '" + product_name + "' with " \
                                                                                                                  " the description - '" + product_desc + "'. The advertisement is to be delivered to the customer named '" + customer_name + \
              "' whose interests are as follows - '" + customer_interests + "'. No need of Hashtags. No need of product " \
